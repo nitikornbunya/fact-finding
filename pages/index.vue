@@ -136,7 +136,7 @@ export default {
       tags: [
         { value: "130821", name_th: "ม๊อบ 13 สิงหา" },
         { value: "140821", name_th: "ป้าเป้า" },
-        { value: "150821", name_th: "คณะราษเปซ" },
+        // { value: "150821", name_th: "คณะราษเปซ" },
       ],
       filter: [
         { value: "violence", type: "violence", name_th: "ความรุนแรง" },
