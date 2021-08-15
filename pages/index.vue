@@ -201,12 +201,15 @@ export default {
 </script>
 
 <style>
-.main-row {
+.main-row, .map-area, .search-area  {
   height: 100%;
+}
+.search-area {
+  z-index: 1000;
 }
 #map {
   width: 100%;
-  height: 100%;
+  height: 800px;
 }
 .mapboxgl-ctrl-bottom-right {
   display: none;
