@@ -87,7 +87,7 @@
         <div class="d-flex flex-column pa-4">
           <div class="mb-4">15:00</div>
           <v-row>
-            <v-col v-for="n in 6" :key="n" cols="auto">
+            <v-col v-for="n in 2" :key="n" cols="auto">
               <v-card :elevation="4" height="80" width="80" class="primary"> </v-card>
             </v-col>
           </v-row>
@@ -139,7 +139,7 @@ export default {
         // { value: "150821", name_th: "คณะราษเปซ" },
       ],
       filter: [
-        { value: "violence", type: "violence", name_th: "ความรุนแรง" },
+        // { value: "violence", type: "violence", name_th: "ความรุนแรง" },
         { value: "protest", type: "violence", name_th: "การประท้วง" },
         { value: "arrest", type: "violence", name_th: "การจับกุม" },
         { value: "officer", type: "officer", name_th: "การกระทำของเจ้าหน้าที่" },
