@@ -285,7 +285,7 @@ export default {
           var firebaseData = doc.data();
           if (firebaseData) {
             // this.txt = firebaseData.txt;
-            console.log(firebaseData);
+            // console.log(firebaseData);
             this.feedData = firebaseData;
           }
         });
