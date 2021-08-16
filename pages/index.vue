@@ -6,13 +6,13 @@
         <v-row>
           <v-col>
             <b>วันที่</b>
-            <v-text-field v-model="searchKeyword" label="คำค้นหา" solo></v-text-field>
+            <v-text-field v-model="selecteDate" label="คำค้นหา" solo></v-text-field>
           </v-col>
           <v-col>
             <b>ตั้งแต่เวลา</b>
             <v-select
-              v-model="selectedTime"
-              :items="timeSlots"
+              v-model="selectedStartTime"
+              :items="time"
               label="คำค้นหา"
               solo
             ></v-select>
@@ -20,8 +20,8 @@
           <v-col>
             <b>ถึงเวลา</b>
             <v-select
-              v-model="selectedTime"
-              :items="timeSlots"
+              v-model="selectedEndTime"
+              :items="time"
               label="คำค้นหา"
               solo
             ></v-select>
@@ -132,7 +132,10 @@ export default {
       map: {},
       searchKeyword: "#ม๊อบ 13 สิงหา",
       timeSlots: ["10 นาที", "30 นาที", "1 ชั่วโมง"],
+      selecteDate: '13 สิงหาคม 2564',
       selectedTime: "10 นาที",
+      selectedStartTime: '15:00',
+      selectedEndTime: '16:00',
       tags: [
         { value: "130821", name_th: "ม๊อบ 13 สิงหา" },
         { value: "140821", name_th: "ป้าเป้า" },
@@ -150,11 +153,15 @@ export default {
       slider: 0,
       sliderMax: 100,
       isPlaying: false,
+      time: ['15:00', '15:05', '15:10'],
       markerList: [
         [100.53826, 13.764981],
         [100.53914, 13.764921],
         [100.53816, 13.764921],
         [100.53829, 13.764911],
+        [100.537566, 13.763655],
+        [100.537641, 13.763916],
+        [100.537556, 13.764093]
       ],
     };
   },
@@ -176,10 +183,10 @@ export default {
       this.createMarker();
     },
     createMarker() {
-      // this.markerList.forEach(element => {
-      //   console.log(element[0])
-      //   const marker1 = new mapboxgl.Marker().setLngLat([100.53826, 13.764981]).addTo(this.map);
-      // });
+      this.markerList.forEach(element => {
+        console.log(element[0])
+        const marker1 = new mapboxgl.Marker().setLngLat([element[0], element[1]]).addTo(this.map);
+      });
     },
     toggleIsPlay() {
       const self = this;
@@ -209,11 +216,11 @@ export default {
 }
 #map {
   width: 100%;
-  height: 800px;
+  height: 100%;
 }
-.mapboxgl-ctrl-bottom-right {
+/* .mapboxgl-ctrl-bottom-right {
   display: none;
-}
+} */
 .top-menu {
   /* height: 40%; */
   height: 300px;
