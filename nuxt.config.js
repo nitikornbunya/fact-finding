@@ -40,7 +40,7 @@ export default {
       }
     ],
     script: [{
-      src: "https://api.longdo.com/map/?key=11baf6dcfba49d731d5ba497ccfde73c",
+      src: "",
     }, ],
   },
 
