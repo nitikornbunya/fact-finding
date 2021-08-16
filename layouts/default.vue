@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <Nuxt />
-    <v-card class="logo" dark>Fact Finder</v-card>
+    <v-card class="logo" dark>Fact Finder (developing)</v-card>
     <!-- <v-main>
         <Nuxt />
     </v-main> -->
