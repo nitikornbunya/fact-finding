@@ -156,6 +156,9 @@ import "vue-slider-component/dist-css/vue-slider-component.css";
 // import theme
 import "vue-slider-component/theme/default.css";
 
+import { db } from "~/plugins/firebaseConfig.js";
+import firebase from "firebase/app";
+
 export default {
   components: {
     VueSlider,
@@ -165,6 +168,7 @@ export default {
       access_token:
         "pk.eyJ1Ijoibml0aWtvcm4iLCJhIjoiY2p6ZHR0Yjk0MDNxNDNncGhqbDk5M3ZpaCJ9.FW231UaLDWmlgt3d7HQ1yg",
       map: {},
+      feedData: {},
       date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
         .toISOString()
         .substr(0, 10),
@@ -270,8 +274,22 @@ export default {
   },
   mounted() {
     this.createMap();
+    this.getData();
   },
   methods: {
+    getData() {
+      db.collection("records")
+        .doc("B9Q5Ufbam7kWiKl7lwYy")
+        .onSnapshot((doc) => {
+          //console.log("Current data: ", doc.data());
+          var firebaseData = doc.data();
+          if (firebaseData) {
+            // this.txt = firebaseData.txt;
+            console.log(firebaseData);
+            this.feedData = firebaseData;
+          }
+        });
+    },
     createMap() {
       mapboxgl.accessToken = this.access_token;
       this.map = new mapboxgl.Map({
@@ -280,7 +298,7 @@ export default {
         center: [100.53826, 13.764981], // starting position [lng, lat]
         zoom: 15, // starting zoom
       });
-      this.createMarker();
+      // this.createMarker();
     },
     createMarker() {
       this.markerList.forEach((element) => {
@@ -304,6 +322,20 @@ export default {
       } else {
         clearInterval(self.playInterval);
       }
+    },
+  },
+  watch: {
+    feedData: function (val) {
+      // create the popup
+      const popup = new mapboxgl.Popup().setHTML(
+        'reference: ' + val.referenceUrl +
+        '</br><img class="img-popup" src="' + val.mediaUrl +'">'
+      );
+
+      const marker1 = new mapboxgl.Marker()
+        .setLngLat([val.coordinates._long, val.coordinates._lat])
+        .setPopup(popup)
+        .addTo(this.map);
     },
   },
 };
@@ -352,5 +384,9 @@ export default {
   display: flex;
   justify-self: center;
   align-items: center;
+}
+.img-popup {
+  height: 240px;
+  width: 100%;
 }
 </style>
