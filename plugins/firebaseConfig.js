@@ -4,16 +4,9 @@ import 'firebase/firestore'
 // Initialize Cloud Firestore through Firebase
 if (!firebase.apps.length) {
     const firebaseConfig = {
-        // apiKey: "api-key",
-        // authDomain: "project-id.firebaseapp.com",
-        // databaseURL: "https://project-id.firebaseio.com",
-        // projectId: "project-id",
-        // storageBucket: "project-id.appspot.com",
-        // messagingSenderId: "sender-id",
-        // appId: "app-id",
         apiKey: "AIzaSyBG-kb-Uw93GoGrVMlH2G-ZAALbYJ7PQtU",
-        authDomain: "fact-finder-app.firebaseapp.com",
-        databaseURL: "fact-finder-app.firebaseio.com",
+        // authDomain: "fact-finder-app.firebaseapp.com",
+        // databaseURL: "fact-finder-app.firebaseio.com",
         projectId: "fact-finder-app",
         storageBucket: "fact-finder-app.appspot.com",
         messagingSenderId: "671482455594",
